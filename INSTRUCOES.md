@@ -15,7 +15,8 @@ O CronosFlow é um sistema de controle de tempo e faturamento para seu escritór
 | Informação | Dados |
 |---|---|
 | **Código de acesso** | `adv2026` |
-| **URL** | http://localhost:5173 (ambiente local) |
+| **URL (Produção)** | https://vercel.com/adelinos-projects/cronoflow-gig |
+| **URL (Local)** | http://localhost:5173 |
 
 ### 2. Usuários de Teste
 
@@ -55,7 +56,7 @@ O CronosFlow é um sistema de controle de tempo e faturamento para seu escritór
    - Processual
    - Administrativo
    - Consultoria
-4. Selecione a **tarefa** (ou escolha "Outros" para自定义)
+4. Selecione a **tarefa** (ou escolha "Outros" para outra)
 5. Clique em **Iniciar** para começar o cronômetro
 6. Quando terminar, clique em **Parar**
 7. Adicione uma **descrição** do que fez (opcional)
@@ -133,7 +134,7 @@ Funcionário                      Supervisor                    Admin
 - Elaboração de Contrato
 
 ### Outros
-- Campo livre para自定义
+- Campo livre para outra tarefa
 
 ---
 
@@ -148,7 +149,7 @@ R: O tempo será perdido. Sempre pare o cronômetro antes de fechar.
 **P: Posso ter múltiplos lançamentos ao mesmo tempo?**
 R: Sim, mas recomendado um lançamento por vez para garantir precisão.
 
-**P: Os dados ficamsalvos onde?**
+**P: Os dados ficam salvos onde?**
 R: No navegador (localStorage). Limpar o cache do navegador pode apagar os dados.
 
 ---
@@ -160,7 +161,24 @@ R: No navegador (localStorage). Limpar o cache do navegador pode apagar os dados
 - Sem upload de imagens (apenas URL)
 - Sem notificação automática
 
-Essas funcionalidades serão adicionadasna versão completa.
+Essas funcionalidades serão adicionadas na versão completa.
+
+---
+
+## Deploy no Vercel
+
+O projeto está configurado para deploy automático no Vercel.
+
+**Configuração Vercel:**
+| Setting | Value |
+|---|---|
+| Framework | Other |
+| Root Directory | `/crono_flow` |
+| Build Command | `npm run build` |
+| Output Directory | `dist` |
+| Install Command | `npm install` |
+
+**URL de Produção:** https://vercel.com/adelinos-projects/cronoflow-gig
 
 ---
 
