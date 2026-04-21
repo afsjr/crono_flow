@@ -13,7 +13,10 @@
     "test:coverage": "vitest run --coverage",
     "dep:circular": "madge --circular --extensions ts,tsx src",
     "dep:tree": "madge --extensions ts,tsx src",
-    "dep:analyze": "madge --circular --extensions ts,tsx --json src"
+    "dep:analyze": "madge --circular --extensions ts,tsx --json src",
+    "dep:validate": "npx depcruise --no-config -T err src",
+    "dep:list": "npx depcruise --no-config -T text src",
+    "dep:stats": "npx depcruise --no-config -T json src"
   },
   "dependencies": {
     "jspdf": "^4.2.1",
@@ -29,6 +32,7 @@
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
+    "dependency-cruiser": "^17.3.10",
     "eslint": "^9.39.4",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",

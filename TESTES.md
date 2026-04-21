@@ -49,25 +49,36 @@ src/test/
 
 | Comando | Descrição |
 |---|---|
-| `npm run dep:circular` | Verifica dependências circulares |
-| `npm run dep:tree` | Mostra árvore de dependências |
-| `npm run dep:analyze` | Gera JSON para análise |
+| `npm run dep:circular` | Verifica dependências circulares (madge) |
+| `npm run dep:tree` | Mostra árvore de dependências (madge) |
+| `npm run dep:analyze` | Gera JSON para análise (madge) |
+| `npm run dep:validate` | Valida regras de dependência (dependency-cruiser) |
+| `npm run dep:list` | Lista todas dependências (dependency-cruiser) |
+| `npm run dep:stats` | Estatísticas em JSON (dependency-cruiser) |
 
 ### Resultados Atuais
 
-```
-✔ No circular dependency found!
-```
+| Verificação | Status |
+|---|---|
+| Dependências circulares | ✅ 0 encontradas |
+| Estrutura válida | ✅ Compliant |
 
-### Estrutura de Dependências
+### Estrutura de Dependências (src/)
 
-| Camada | Arquivos | Depende de |
-|---|---|---|
-| Entry | main.tsx | App.tsx |
-| Root | App.tsx | components, services, types |
-| Components | 8 componentes | types, utils |
-| Services | storage.ts | types |
-| Utils | format, validation | types |
+```
+main.tsx
+└── App.tsx
+    ├── components/
+    │   ├── Dashboard/
+    │   ├── Entries/
+    │   ├── Layout/
+    │   ├── Login/ → services/storage
+    │   ├── Reports/
+    │   ├── Timer/
+    │   └── Validation/
+    ├── services/storage.ts
+    └── types.ts ← raiz (nenhum import)
+```
 
 ---
 
