@@ -43,42 +43,62 @@ src/test/
 
 ---
 
-## Testes de Estrutura
+## Testes de Estrutura - Fase 3 (ESLint Import Rules)
 
 ### Scripts Disponíveis
 
 | Comando | Descrição |
 |---|---|
-| `npm run dep:circular` | Verifica dependências circulares (madge) |
-| `npm run dep:tree` | Mostra árvore de dependências (madge) |
-| `npm run dep:analyze` | Gera JSON para análise (madge) |
-| `npm run dep:validate` | Valida regras de dependência (dependency-cruiser) |
-| `npm run dep:list` | Lista todas dependências (dependency-cruiser) |
-| `npm run dep:stats` | Estatísticas em JSON (dependency-cruiser) |
+| `npm run lint` | ESLint com regras de import |
+| `npm run dep:circular` | Dependências circulares (madge) |
+| `npm run dep:validate` | Valida regras (dependency-cruiser) |
+| `npm run dep:list` | Lista todas deps (dependency-cruiser) |
+
+### Regras ESLint Configuradas
+
+| Regra | Severity | Descrição |
+|---|---|---|
+| `import/no-cycle` | error | Imports circulares |
+| `import/no-restricted-paths` | error | Imports proibidos por zona |
+| `import/no-unresolved` | error | Imports não resolvidos |
+| `react-hooks/set-state-in-effect` | error | setState em effect |
+
+### Zonas de Restrição
+
+| De | Para | Motivo |
+|---|---|---|
+| `src/components/**` | `src/test/**` | Test files são desenvolvimento |
+| `src/services/**` | `src/components/**` | Services não sabem de UI |
+| `src/utils/**` | `src/components/**` | Utils são puros |
+
+### CI/CD Integration
+
+GitHub Actions workflow em `.github/workflows/dependencies.yml`
+
+---
+
+## Testes de Estrutura - Completo
+
+### Scripts Disponíveis (Todas as Fases)
+
+| Fase | Comando | Ferramenta |
+|---|---|---|
+| **1** | `npm run dep:circular` | madge |
+| **1** | `npm run dep:tree` | madge |
+| **2** | `npm run dep:validate` | dependency-cruiser |
+| **2** | `npm run dep:list` | dependency-cruiser |
+| **3** | `npm run lint` | ESLint |
+| **3** | CI/CD | GitHub Actions |
 
 ### Resultados Atuais
 
 | Verificação | Status |
 |---|---|
-| Dependências circulares | ✅ 0 encontradas |
-| Estrutura válida | ✅ Compliant |
-
-### Estrutura de Dependências (src/)
-
-```
-main.tsx
-└── App.tsx
-    ├── components/
-    │   ├── Dashboard/
-    │   ├── Entries/
-    │   ├── Layout/
-    │   ├── Login/ → services/storage
-    │   ├── Reports/
-    │   ├── Timer/
-    │   └── Validation/
-    ├── services/storage.ts
-    └── types.ts ← raiz (nenhum import)
-```
+| Dependências circulares | ✅ 0 |
+| Estrutura válida | ✅ |
+| ESLint | ✅ 2 warnings (não críticos) |
+| Build | ✅ |
+| Tests | ✅ 36 passando |
 
 ---
 
