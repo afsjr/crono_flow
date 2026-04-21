@@ -43,6 +43,34 @@ src/test/
 
 ---
 
+## Testes de Estrutura
+
+### Scripts Disponíveis
+
+| Comando | Descrição |
+|---|---|
+| `npm run dep:circular` | Verifica dependências circulares |
+| `npm run dep:tree` | Mostra árvore de dependências |
+| `npm run dep:analyze` | Gera JSON para análise |
+
+### Resultados Atuais
+
+```
+✔ No circular dependency found!
+```
+
+### Estrutura de Dependências
+
+| Camada | Arquivos | Depende de |
+|---|---|---|
+| Entry | main.tsx | App.tsx |
+| Root | App.tsx | components, services, types |
+| Components | 8 componentes | types, utils |
+| Services | storage.ts | types |
+| Utils | format, validation | types |
+
+---
+
 ## Testes Implementados
 
 ### 1. format.test.ts (19 testes)
