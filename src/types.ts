@@ -1,3 +1,5 @@
+export type View = 'dashboard' | 'timer' | 'entries' | 'validation' | 'reports';
+
 export interface User {
   id: string;
   name: string;
